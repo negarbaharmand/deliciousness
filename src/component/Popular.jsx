@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
@@ -77,10 +78,9 @@ const Card = styled.div`
     height: 100%;
     object-fit: cover;
   }
-  p{
+  p {
     position: absolute;
     z-index: 10;
-    // left: 50%;
     bottom: 0%
     transform: translate(-50%, 0%);
     color: white;
@@ -102,5 +102,4 @@ const Gradient = styled.div`
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
 `;
-
 export default Popular;
