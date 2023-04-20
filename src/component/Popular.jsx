@@ -81,15 +81,15 @@ const Card = styled.div`
   p {
     position: absolute;
     z-index: 10;
-    bottom: 0%
-    transform: translate(-50%, 0%);
+    bottom: 15%;
+    /* transform: translate(50%, 0%); */
     color: white;
     width: 100%;
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
-    height: 100%;
-    display: flex;
+    /* height: 100%; */
+    /* display: flex; */
     justify-content: center;
     align-items: center;
   }
