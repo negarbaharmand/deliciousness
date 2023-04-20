@@ -13,7 +13,7 @@ function Search() {
   };
 
   return (
-    <FormStyle>
+    <FormStyle onSubmit={submitHandler}>
       <div>
         <FaSearch></FaSearch>
         <input
@@ -27,7 +27,7 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-  margin: 0rem 20rem;
+  margin: 4rem 20rem;
 
   div {
     width: 100%;

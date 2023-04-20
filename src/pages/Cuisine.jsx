@@ -8,11 +8,6 @@ function Cuisine() {
   let params = useParams();
 
   const getCuisine = async (name) => {
-    // const check = localStorage.getItem("popular");
-
-    // if (check) {
-    //   setPopular(JSON.parse(check));
-    // } else {
     const data = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
         import.meta.env.VITE_API_KEY
