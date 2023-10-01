@@ -87,10 +87,10 @@ Error generating stack: `+o.message+`
  * LICENSE.md file in the root directory of this source tree.
  *
  * @license MIT
- */function Ra(){return Ra=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},Ra.apply(this,arguments)}function v0(e,t){if(e==null)return{};var n={},r=Object.keys(e),i,o;for(o=0;o<r.length;o++)i=r[o],!(t.indexOf(i)>=0)&&(n[i]=e[i]);return n}function vP(e){return!!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)}function gP(e,t){return e.button===0&&(!t||t==="_self")&&!vP(e)}const yP=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset"],SP=["aria-current","caseSensitive","className","end","style","to","children"];function wP(e){let{basename:t,children:n,window:r}=e,i=k.useRef();i.current==null&&(i.current=CC({window:r,v5Compat:!0}));let o=i.current,[s,a]=k.useState({action:o.action,location:o.location});return k.useLayoutEffect(()=>o.listen(a),[o]),k.createElement(pP,{basename:t,children:n,location:s.location,navigationType:s.action,navigator:o})}const EP=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",xP=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,Ci=k.forwardRef(function(t,n){let{onClick:r,relative:i,reloadDocument:o,replace:s,state:a,target:l,to:u,preventScrollReset:c}=t,f=v0(t,yP),{basename:d}=k.useContext(xi),g,v=!1;if(typeof u=="string"&&xP.test(u)&&(g=u,EP)){let h=new URL(window.location.href),p=u.startsWith("//")?new URL(h.protocol+u):new URL(u),S=Vd(p.pathname,d);p.origin===h.origin&&S!=null?u=S+p.search+p.hash:v=!0}let y=iP(u,{relative:i}),w=PP(u,{replace:s,state:a,target:l,preventScrollReset:c,relative:i});function m(h){r&&r(h),h.defaultPrevented||w(h)}return k.createElement("a",Ra({},f,{href:g||y,onClick:v||o?r:m,ref:n,target:l}))}),CP=k.forwardRef(function(t,n){let{"aria-current":r="page",caseSensitive:i=!1,className:o="",end:s=!1,style:a,to:l,children:u}=t,c=v0(t,SP),f=$d(l,{relative:c.relative}),d=es(),g=k.useContext(zd),{navigator:v}=k.useContext(xi),y=v.encodeLocation?v.encodeLocation(f).pathname:f.pathname,w=d.pathname,m=g&&g.navigation&&g.navigation.location?g.navigation.location.pathname:null;i||(w=w.toLowerCase(),m=m?m.toLowerCase():null,y=y.toLowerCase());let h=w===y||!s&&w.startsWith(y)&&w.charAt(y.length)==="/",p=m!=null&&(m===y||!s&&m.startsWith(y)&&m.charAt(y.length)==="/"),S=h?r:void 0,x;typeof o=="function"?x=o({isActive:h,isPending:p}):x=[o,h?"active":null,p?"pending":null].filter(Boolean).join(" ");let T=typeof a=="function"?a({isActive:h,isPending:p}):a;return k.createElement(Ci,Ra({},c,{"aria-current":S,className:x,ref:n,style:T,to:l}),typeof u=="function"?u({isActive:h,isPending:p}):u)});var Qp;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmitImpl="useSubmitImpl",e.UseFetcher="useFetcher"})(Qp||(Qp={}));var Xp;(function(e){e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"})(Xp||(Xp={}));function PP(e,t){let{target:n,replace:r,state:i,preventScrollReset:o,relative:s}=t===void 0?{}:t,a=m0(),l=es(),u=$d(e,{relative:s});return k.useCallback(c=>{if(gP(c,n)){c.preventDefault();let f=r!==void 0?r:Ta(l)===Ta(u);a(e,{replace:f,state:i,preventScrollReset:o,relative:s})}},[l,a,u,r,i,n,e,o,s])}function kP(){const[e,t]=k.useState([]);k.useEffect(()=>{n()},[]);const n=async()=>{const r=localStorage.getItem("veggie");if(r)t(JSON.parse(r));else{const o=await(await fetch("https://api.spoonacular.com/recipes/random?apiKey=ae9518266f9b49a085bc5b82ff301fb4&number=9&tags=vegetarian")).json();localStorage.setItem("veggie",JSON.stringify(o.recipes)),t(o.recipes),console.log(o.recipes)}};return G(dv,{children:Re(TP,{children:[G("h3",{children:"Vegeterian Picks"}),G(a0,{options:{perPage:3,arrows:!1,pagination:!1,drag:"free",gap:"5rem"},children:e.map(r=>G(l0,{children:G(AP,{children:Re(Ci,{to:"/recipe/"+r.id,children:[G("p",{children:r.title}),G("img",{src:r.image,alt:r.title}),G(RP,{})]})})},r.id))})]})})}const TP=$e.div`
+ */function Ra(){return Ra=Object.assign?Object.assign.bind():function(e){for(var t=1;t<arguments.length;t++){var n=arguments[t];for(var r in n)Object.prototype.hasOwnProperty.call(n,r)&&(e[r]=n[r])}return e},Ra.apply(this,arguments)}function v0(e,t){if(e==null)return{};var n={},r=Object.keys(e),i,o;for(o=0;o<r.length;o++)i=r[o],!(t.indexOf(i)>=0)&&(n[i]=e[i]);return n}function vP(e){return!!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)}function gP(e,t){return e.button===0&&(!t||t==="_self")&&!vP(e)}const yP=["onClick","relative","reloadDocument","replace","state","target","to","preventScrollReset"],SP=["aria-current","caseSensitive","className","end","style","to","children"];function wP(e){let{basename:t,children:n,window:r}=e,i=k.useRef();i.current==null&&(i.current=CC({window:r,v5Compat:!0}));let o=i.current,[s,a]=k.useState({action:o.action,location:o.location});return k.useLayoutEffect(()=>o.listen(a),[o]),k.createElement(pP,{basename:t,children:n,location:s.location,navigationType:s.action,navigator:o})}const EP=typeof window<"u"&&typeof window.document<"u"&&typeof window.document.createElement<"u",xP=/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i,Ci=k.forwardRef(function(t,n){let{onClick:r,relative:i,reloadDocument:o,replace:s,state:a,target:l,to:u,preventScrollReset:c}=t,f=v0(t,yP),{basename:d}=k.useContext(xi),g,v=!1;if(typeof u=="string"&&xP.test(u)&&(g=u,EP)){let h=new URL(window.location.href),p=u.startsWith("//")?new URL(h.protocol+u):new URL(u),S=Vd(p.pathname,d);p.origin===h.origin&&S!=null?u=S+p.search+p.hash:v=!0}let y=iP(u,{relative:i}),w=PP(u,{replace:s,state:a,target:l,preventScrollReset:c,relative:i});function m(h){r&&r(h),h.defaultPrevented||w(h)}return k.createElement("a",Ra({},f,{href:g||y,onClick:v||o?r:m,ref:n,target:l}))}),CP=k.forwardRef(function(t,n){let{"aria-current":r="page",caseSensitive:i=!1,className:o="",end:s=!1,style:a,to:l,children:u}=t,c=v0(t,SP),f=$d(l,{relative:c.relative}),d=es(),g=k.useContext(zd),{navigator:v}=k.useContext(xi),y=v.encodeLocation?v.encodeLocation(f).pathname:f.pathname,w=d.pathname,m=g&&g.navigation&&g.navigation.location?g.navigation.location.pathname:null;i||(w=w.toLowerCase(),m=m?m.toLowerCase():null,y=y.toLowerCase());let h=w===y||!s&&w.startsWith(y)&&w.charAt(y.length)==="/",p=m!=null&&(m===y||!s&&m.startsWith(y)&&m.charAt(y.length)==="/"),S=h?r:void 0,x;typeof o=="function"?x=o({isActive:h,isPending:p}):x=[o,h?"active":null,p?"pending":null].filter(Boolean).join(" ");let T=typeof a=="function"?a({isActive:h,isPending:p}):a;return k.createElement(Ci,Ra({},c,{"aria-current":S,className:x,ref:n,style:T,to:l}),typeof u=="function"?u({isActive:h,isPending:p}):u)});var Qp;(function(e){e.UseScrollRestoration="useScrollRestoration",e.UseSubmitImpl="useSubmitImpl",e.UseFetcher="useFetcher"})(Qp||(Qp={}));var Xp;(function(e){e.UseFetchers="useFetchers",e.UseScrollRestoration="useScrollRestoration"})(Xp||(Xp={}));function PP(e,t){let{target:n,replace:r,state:i,preventScrollReset:o,relative:s}=t===void 0?{}:t,a=m0(),l=es(),u=$d(e,{relative:s});return k.useCallback(c=>{if(gP(c,n)){c.preventDefault();let f=r!==void 0?r:Ta(l)===Ta(u);a(e,{replace:f,state:i,preventScrollReset:o,relative:s})}},[l,a,u,r,i,n,e,o,s])}function kP(){const[e,t]=k.useState([]);k.useEffect(()=>{n()},[]);const n=async()=>{const r=localStorage.getItem("veggie");if(r)t(JSON.parse(r));else{const o=await(await fetch("https://api.spoonacular.com/recipes/random?apiKey=ae9518266f9b49a085bc5b82ff301fb4&number=9&tags=vegetarian")).json();localStorage.setItem("veggie",JSON.stringify(o.recipes)),t(o.recipes),console.log(o.recipes)}};return G(dv,{children:Re(TP,{children:[G("h3",{children:"Vegeterian Picks"}),G(a0,{options:{perPage:2,arrows:!1,pagination:!1,drag:"free",gap:"5rem"},children:e.map(r=>G(l0,{children:G(AP,{children:Re(Ci,{to:"/recipe/"+r.id,children:[G("p",{children:r.title}),G("img",{src:r.image,alt:r.title}),G(RP,{})]})})},r.id))})]})})}const TP=$e.div`
   margin: 4rem 0rem;
 `,AP=$e.div`
-  min-height: 25rem;
+  min-height: 15rem; /* Decrease the height for smaller screens */
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
@@ -103,18 +103,16 @@ Error generating stack: `+o.message+`
     height: 100%;
     object-fit: cover;
   }
+
   p {
     position: absolute;
     z-index: 10;
-    bottom: 15%;
-    /* transform: translate(50%, 0%); */
+    bottom: 10%; /* Adjust the position of the text */
     color: white;
     width: 100%;
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
-    /* height: 100%; */
-    /* display: flex; */
     justify-content: center;
     align-items: center;
   }
@@ -124,10 +122,10 @@ Error generating stack: `+o.message+`
   width: 100%;
   height: 100%;
   background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-`;function LP(){const[e,t]=k.useState([]);k.useEffect(()=>{n()},[]);const n=async()=>{const r=localStorage.getItem("popular");if(r)t(JSON.parse(r));else{const o=await(await fetch("https://api.spoonacular.com/recipes/random?apiKey=ae9518266f9b49a085bc5b82ff301fb4&number=9")).json();localStorage.setItem("popular",JSON.stringify(o.recipes)),t(o.recipes),console.log(o.recipes)}};return G(dv,{children:Re(_P,{children:[G("h3",{children:"Popular Picks"}),G(a0,{options:{perPage:4,arrows:!1,pagination:!1,drag:"free",gap:"5rem"},children:e.map(r=>G(l0,{children:G(DP,{children:Re(Ci,{to:"/recipe/"+r.id,children:[G("p",{children:r.title}),G("img",{src:r.image,alt:r.title}),G(OP,{})]})})},r.id))})]})})}const _P=$e.div`
+`;function LP(){const[e,t]=k.useState([]);k.useEffect(()=>{n()},[]);const n=async()=>{const r=localStorage.getItem("popular");if(r)t(JSON.parse(r));else{const o=await(await fetch("https://api.spoonacular.com/recipes/random?apiKey=ae9518266f9b49a085bc5b82ff301fb4&number=9")).json();localStorage.setItem("popular",JSON.stringify(o.recipes)),t(o.recipes),console.log(o.recipes)}};return G(dv,{children:Re(_P,{children:[G("h3",{children:"Popular Picks"}),G(a0,{options:{perPage:2,arrows:!1,pagination:!1,drag:"free",gap:"5rem"},children:e.map(r=>G(l0,{children:G(DP,{children:Re(Ci,{to:"/recipe/"+r.id,children:[G("p",{children:r.title}),G("img",{src:r.image,alt:r.title}),G(OP,{})]})})},r.id))})]})})}const _P=$e.div`
   margin: 4rem 0rem;
 `,DP=$e.div`
-  min-height: 25rem;
+  min-height: 15rem; /* Decrease the height for smaller screens */
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
@@ -140,18 +138,16 @@ Error generating stack: `+o.message+`
     height: 100%;
     object-fit: cover;
   }
+
   p {
     position: absolute;
     z-index: 10;
-    bottom: 15%;
-    /* transform: translate(50%, 0%); */
+    bottom: 10%; /* Adjust the position of the text */
     color: white;
     width: 100%;
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
-    /* height: 100%; */
-    /* display: flex; */
     justify-content: center;
     align-items: center;
   }
@@ -265,12 +261,14 @@ Error generating stack: `+o.message+`
     }
   }
 `;function g3(){const[e,t]=k.useState(""),n=m0();return G(y3,{onSubmit:i=>{i.preventDefault(),n("/searched/"+e)},children:Re("div",{children:[G(f3,{}),G("input",{onChange:i=>t(i.target.value),type:"text",value:e})]})})}const y3=$e.form`
-  margin: 4rem 20rem;
+  margin: 4rem auto; /* Center the search bar horizontally */
+  max-width: 320px; /* Adjust the maximum width as needed */
 
   div {
     width: 100%;
     position: relative;
   }
+
   input {
     border: none;
     background: linear-gradient(35deg, #494949, #313131);
@@ -282,6 +280,7 @@ Error generating stack: `+o.message+`
     outline: none;
     width: 100%;
   }
+
   svg {
     position: absolute;
     top: 50%;
@@ -289,7 +288,7 @@ Error generating stack: `+o.message+`
     transform: translate(100%, -50%);
     color: white;
   }
-`;function S3(){return G("div",{className:"App",children:Re(wP,{children:[Re(E3,{children:[G(h3,{}),G(w3,{to:"/",children:"deliciousss"})]}),G(g3,{}),G(m3,{}),G(s3,{})]})})}const w3=$e(Ci)`
+`;function S3(){return G("div",{className:"App",children:Re(wP,{children:[Re(E3,{children:[G(h3,{}),G(w3,{to:"/",children:"deliciousness"})]}),G(g3,{}),G(m3,{}),G(s3,{})]})})}const w3=$e(Ci)`
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: 400;
