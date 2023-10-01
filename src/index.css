@@ -1,3 +1,4 @@
+/* Default styles for all screen sizes */
 * {
   margin: 0;
   padding: 0;
@@ -13,19 +14,6 @@ body {
   margin: 0% 20%;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
 h4 {
   font-size: 1rem;
   color: rgba(56, 56, 56);
@@ -35,10 +23,24 @@ h3 {
   font-size: 1.5rem;
   color: rgba(56, 56, 56);
   line-height: 2.5rem;
-  margin: 2rem, 0rem;
+  margin: 2rem 0rem;
 }
+
 a {
   font-weight: 500;
   color: rgba(56, 56, 56);
   text-decoration: inherit;
+}
+
+/* Media query for screens smaller than 768px (typical mobile devices) */
+@media (max-width: 768px) {
+  body {
+    margin: 0 10px; /* Adjust margins for smaller screens */
+  }
+
+  h3 {
+    font-size: 1.2rem; /* Decrease font size for smaller screens */
+  }
+
+  /* Add any other styles needed for smaller screens */
 }

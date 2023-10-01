@@ -27,12 +27,14 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-  margin: 4rem 20rem;
+  margin: 4rem auto; /* Center the search bar horizontally */
+  max-width: 320px; /* Adjust the maximum width as needed */
 
   div {
     width: 100%;
     position: relative;
   }
+
   input {
     border: none;
     background: linear-gradient(35deg, #494949, #313131);
@@ -44,6 +46,7 @@ const FormStyle = styled.form`
     outline: none;
     width: 100%;
   }
+
   svg {
     position: absolute;
     top: 50%;

@@ -66,7 +66,7 @@ const Wrapper = styled.div`
 `;
 
 const Card = styled.div`
-  min-height: 25rem;
+  min-height: 15rem; /* Decrease the height for smaller screens */
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
@@ -79,18 +79,16 @@ const Card = styled.div`
     height: 100%;
     object-fit: cover;
   }
+
   p {
     position: absolute;
     z-index: 10;
-    bottom: 15%;
-    /* transform: translate(50%, 0%); */
+    bottom: 10%; /* Adjust the position of the text */
     color: white;
     width: 100%;
     text-align: center;
     font-weight: 600;
     font-size: 1rem;
-    /* height: 100%; */
-    /* display: flex; */
     justify-content: center;
     align-items: center;
   }
