@@ -34,4 +34,4 @@ VITE_API_KEY=xxxxx
 ```bash
 npm run dev
 ```
-### Feel free to read more about the project on my [blog](https://negarbaharmand.com/posts/todo/).
+### Feel free to read more about the project on my [blog](https://negarbaharmand.com/posts/deliciousness/).
