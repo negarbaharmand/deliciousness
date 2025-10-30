@@ -2,7 +2,9 @@
 
 ## 📖 About
 A multipage React application that helps food enthusiasts discover and explore recipes from around the world. Users can search for recipes, view detailed cooking instructions, and browse by categories.
+## Live Demo
 
+[Browse Recipes](https://deliciousness.vercel.app/)
 ## 🚀 Features
 - Search recipes by name or ingredient
 - Browse recipes by category
@@ -15,8 +17,7 @@ A multipage React application that helps food enthusiasts discover and explore r
 - **Frontend:** React, React Router, Styled Components
 - **API:** Spoonacular
 - **Styling:** CSS-in-JS with styled-components
-- **Deployment:** ...
-
+- **Deployment:** [Vercel](https://deliciousness.vercel.app/)
   ## 💡 What I Learned
 - Managing complex state in React applications
 - Working with external APIs and handling async data
