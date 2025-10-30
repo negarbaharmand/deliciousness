@@ -1,36 +1,41 @@
-## deliciousness
+# Deliciousness - Recipe Discovery Platform
 
-Deliciousness is a web application that allows users to browse and search for recipes by name or ingredient. Users can view the instructions and ingredients for each recipe.
+## 📖 About
+A multipage React application that helps food enthusiasts discover and explore recipes from around the world. Users can search for recipes, view detailed cooking instructions, and browse by categories.
 
-This application was built using React and the Spoonacular API for recipe data.
+## 🚀 Features
+- Search recipes by name or ingredient
+- Browse recipes by category
+- View detailed recipe information with ingredients and instructions
+- Responsive design for mobile and desktop
+- Clean, intuitive user interface
+- Fast performance with optimized API calls
+- 
+## 🛠️ Tech Stack
+- **Frontend:** React, React Router, Styled Components
+- **API:** Spoonacular
+- **Styling:** CSS-in-JS with styled-components
+- **Deployment:** ...
 
-## Features
-
-- Recipe browsing and search functionality
-- View recipe instructions and ingredients
-
-## Installation
-
-1. Clone this repository to your local machine
-
+  ## 💡 What I Learned
+- Managing complex state in React applications
+- Working with external APIs and handling async data
+- Creating reusable component architecture
+- Implementing responsive design patterns
+- Routing in single-page applications
+- 
+## 🏃‍♀️ Running Locally
 ```bash
 git clone https://github.com/negarbaharmand/deliciousness.git
-```
-
-2. Install the project dependencies
-
-```bash
+cd deliciousness
 npm install
 ```
 
-3. Create a file named .env in the project root and add your Spoonacular API key to it like this:
-
+Create a file named .env in the project root and add your Spoonacular API key to it like this:
 ```bash
 VITE_API_KEY=xxxxx
 ```
-
-4. Start the app
-
+Run the application
 ```bash
 npm run dev
 ```
