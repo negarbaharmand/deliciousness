@@ -104,15 +104,25 @@ const Card = styled.div`
 
   p {
     position: absolute;
-    z-index: 2;
-    inset-inline: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    color: white;
-    text-align: center;
+    z-index: 2;
+
+    color: #fff;
     font-weight: 600;
     font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-    padding: 0.75rem 0.75rem;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+    line-height: 1.25;
+
+    padding: 0.75rem 1rem;
+
+    background: linear-gradient(
+      to top,
+      rgba(17, 24, 39, 0.65),
+      rgba(32, 41, 61, 0.45)
+    );
+    backdrop-filter: blur(3px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
   }
 `;
 
