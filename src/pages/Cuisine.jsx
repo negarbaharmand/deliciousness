@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
+import RecipeGrid from "../component/RecipeGrid";
+import RecipeCard from "../component/RecipeCard";
 
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
@@ -23,25 +25,23 @@ function Cuisine() {
   }, [params.type]);
 
   return (
-    <motion.div
+    <motion.section
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
-      <Grid>
-        {cuisine.map((item) => {
-          return (
-            <Card key={item.id}>
-              <Link to={"/recipe/" + item.id}>
-                <img src={item.image} alt="" />
-                <h4>{item.title}</h4>
-              </Link>
-            </Card>
-          );
-        })}
-      </Grid>
-    </motion.div>
+      <RecipeGrid>
+        {cuisine.map((item) => (
+          <RecipeCard
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            image={item.image}
+          />
+        ))}
+      </RecipeGrid>
+    </motion.section>
   );
 }
 

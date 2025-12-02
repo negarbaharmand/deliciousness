@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import { Link } from "react-router-dom";
+import RecipeCard from "./RecipeCard";
 
 function Veggie() {
   const [veggie, setVeggie] = useState([]);
@@ -30,41 +31,31 @@ function Veggie() {
     }
   };
   return (
-    <>
-      <Wrapper>
-        <h3>Vegeterian Picks</h3>
-        <Splide
-          options={{
-            perPage: 3,
-            breakpoints: {
-              1200: { perPage: 3, gap: "2rem" },
-              992: { perPage: 2, gap: "1.5rem" },
-              768: { perPage: 2, gap: "1rem" },
-              480: { perPage: 1, gap: "0.75rem" },
-            },
-            arrows: false,
-            pagination: false,
-            drag: "free",
-            gap: "2.5rem",
-            padding: "0.5rem",
-          }}
-        >
-          {veggie.map((recipe) => {
-            return (
-              <SplideSlide key={recipe.id}>
-                <Card>
-                  <Link to={"/recipe/" + recipe.id}>
-                    <p>{recipe.title}</p>
-                    <img src={recipe.image} alt={recipe.title} />
-                    <Gradient />
-                  </Link>
-                </Card>
-              </SplideSlide>
-            );
-          })}
-        </Splide>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <h3>Vegetarian Picks</h3>
+      <Splide
+        options={{
+          perPage: 3,
+          breakpoints: {
+            1200: { perPage: 3, gap: "2rem" },
+            992: { perPage: 2, gap: "1.5rem" },
+            768: { perPage: 2, gap: "1rem" },
+            480: { perPage: 1, gap: "0.75rem" },
+          },
+          arrows: false,
+          pagination: false,
+          drag: "free",
+          gap: "2rem",
+          padding: { left: "0.5rem", right: "0.5rem" },
+        }}
+      >
+        {veggie.map((r) => (
+          <SplideSlide key={r.id}>
+            <RecipeCard id={r.id} title={r.title} image={r.image} />
+          </SplideSlide>
+        ))}
+      </Splide>
+    </Wrapper>
   );
 }
 

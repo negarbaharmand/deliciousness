@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { FaSearch } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Search() {
   const [input, setInput] = useState("");
   const navigate = useNavigate();
+  const location = useLocation();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    navigate("/searched/" + input);
+    if (!input.trim()) return;
+    navigate("/searched/" + input.trim());
   };
+
+  // Clear search when the route changes to anything except searched
+  useEffect(() => {
+    if (!location.pathname.startsWith("/searched/")) {
+      setInput("");
+    }
+  }, [location.pathname]);
 
   return (
     <FormStyle
@@ -55,7 +64,6 @@ const FormStyle = styled.form`
     width: 100%;
     position: relative;
   }
-
   input {
     width: 100%;
     border: none;
@@ -66,7 +74,6 @@ const FormStyle = styled.form`
     border-radius: 0.875rem;
     outline: none;
   }
-
   svg {
     position: absolute;
     top: 50%;
@@ -76,14 +83,6 @@ const FormStyle = styled.form`
     font-size: 1rem;
     opacity: 0.9;
     pointer-events: none;
-  }
-
-  input::placeholder {
-    color: rgba(255, 255, 255, 0.85);
-  }
-
-  input:focus {
-    box-shadow: 0 0 0 3px rgba(242, 113, 33, 0.45);
   }
 `;
 
