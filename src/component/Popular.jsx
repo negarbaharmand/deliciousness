@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import { Link } from "react-router-dom";
+import RecipeCard from "../component/RecipeCard"; // adjust path
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -14,7 +13,6 @@ function Popular() {
 
   const getPopular = async () => {
     const check = localStorage.getItem("popular");
-
     if (check) {
       setPopular(JSON.parse(check));
     } else {
@@ -24,83 +22,51 @@ function Popular() {
         }&number=9`
       );
       const data = await api.json();
-
       localStorage.setItem("popular", JSON.stringify(data.recipes));
       setPopular(data.recipes);
-      console.log(data.recipes);
     }
   };
 
   return (
-    <>
-      <Wrapper>
-        <h3>Popular Picks</h3>
-        <Splide
-          options={{
-            perPage: 2,
-            arrows: false,
-            pagination: false,
-            drag: "free",
-            gap: "5rem",
-          }}
-        >
-          {popular.map((recipe) => {
-            return (
-              <SplideSlide key={recipe.id}>
-                <Card>
-                  <Link to={"/recipe/" + recipe.id}>
-                    <p>{recipe.title}</p>
-                    <img src={recipe.image} alt={recipe.title} />
-                    <Gradient />
-                  </Link>
-                </Card>
-              </SplideSlide>
-            );
-          })}
-        </Splide>
-      </Wrapper>
-    </>
+    <Wrapper>
+      <h3>Popular Picks</h3>
+      <Splide
+        options={{
+          perPage: 3,
+          breakpoints: {
+            1200: { perPage: 3, gap: "2rem" },
+            992: { perPage: 2, gap: "1.5rem" },
+            768: { perPage: 2, gap: "1rem" },
+            480: { perPage: 1, gap: "0.75rem" },
+          },
+          arrows: false,
+          pagination: false,
+          drag: "free",
+          gap: "2rem",
+          padding: { left: "0.5rem", right: "0.5rem" },
+        }}
+      >
+        {popular.map((r) => (
+          <SplideSlide key={r.id}>
+            <RecipeCard id={r.id} title={r.title} image={r.image} />
+          </SplideSlide>
+        ))}
+      </Splide>
+    </Wrapper>
   );
 }
 
-const Wrapper = styled.div`
-  margin: 4rem 0rem;
-`;
+const Wrapper = styled.section`
+  margin: 2rem 0 3rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 
-const Card = styled.div`
-  min-height: 15rem; /* Decrease the height for smaller screens */
-  border-radius: 2rem;
-  overflow: hidden;
-  position: relative;
-
-  img {
-    border-radius: 2rem;
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  p {
-    position: absolute;
-    z-index: 10;
-    bottom: 10%; /* Adjust the position of the text */
-    color: white;
-    width: 100%;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1rem;
-    justify-content: center;
-    align-items: center;
+  h3 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   }
 `;
 
-const Gradient = styled.div`
-  z-index: 3;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-`;
 export default Popular;

@@ -15,6 +15,7 @@ function Pages() {
         <Route path="/cuisine/:type" element={<Cuisine />} />
         <Route path="/searched/:search" element={<Searched />} />
         <Route path="/recipe/:name" element={<Recipe />} />
+        <Route path="/deliciousness" element={<Home />} />
       </Routes>
     </AnimatePresence>
   );

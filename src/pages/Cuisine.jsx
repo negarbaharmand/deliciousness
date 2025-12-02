@@ -2,65 +2,106 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { Link, useParams } from "react-router-dom";
+import RecipeCard from "../component/RecipeCard";
+import RecipeGrid from "../component/RecipeGrid";
+
+const PAGE_SIZE = 12; // how many per request
 
 function Cuisine() {
   const [cuisine, setCuisine] = useState([]);
+  const [offset, setOffset] = useState(0);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
   let params = useParams();
 
-  const getCuisine = async (name) => {
-    const data = await fetch(
+  const fetchCuisine = async (name, nextOffset = 0) => {
+    setLoading(true);
+    const res = await fetch(
       `https://api.spoonacular.com/recipes/complexSearch?apiKey=${
         import.meta.env.VITE_API_KEY
-      }&cuisine=${name}`
+      }&cuisine=${encodeURIComponent(
+        name
+      )}&number=${PAGE_SIZE}&offset=${nextOffset}`
     );
-    const recipes = await data.json();
-    setCuisine(recipes.results);
+    const data = await res.json();
+
+    // data.totalResults is provided by the API
+    setTotal(data.totalResults ?? 0);
+
+    if (nextOffset === 0) {
+      setCuisine(data.results || []);
+    } else {
+      setCuisine((prev) => [...prev, ...(data.results || [])]);
+    }
+    setOffset(nextOffset);
+    setLoading(false);
   };
 
   useEffect(() => {
-    getCuisine(params.type);
-    console.log(params.type);
+    // reset when cuisine type changes
+    setCuisine([]);
+    setOffset(0);
+    setTotal(0);
+    fetchCuisine(params.type, 0);
   }, [params.type]);
 
+  const canLoadMore = cuisine.length < total;
+
   return (
-    <motion.div
+    <motion.section
       animate={{ opacity: 1 }}
       initial={{ opacity: 0 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.8 }}
+      transition={{ duration: 0.4 }}
     >
-      <Grid>
-        {cuisine.map((item) => {
-          return (
-            <Card key={item.id}>
-              <Link to={"/recipe/" + item.id}>
-                <img src={item.image} alt="" />
-                <h4>{item.title}</h4>
-              </Link>
-            </Card>
-          );
-        })}
-      </Grid>
-    </motion.div>
+      <RecipeGrid>
+        {cuisine.map((item) => (
+          <RecipeCard
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            image={item.image}
+          />
+        ))}
+      </RecipeGrid>
+
+      <Actions>
+        {canLoadMore && (
+          <button
+            onClick={() => fetchCuisine(params.type, offset + PAGE_SIZE)}
+            disabled={loading}
+          >
+            {loading ? "Loading..." : "Load more"}
+          </button>
+        )}
+        {!loading && cuisine.length === 0 && <p>No results.</p>}
+      </Actions>
+    </motion.section>
   );
 }
 
-const Grid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
-  grid-gap: 3rem;
+const Actions = styled.div`
+  max-width: 1200px;
+  margin: 0 auto 3rem;
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+
+  button {
+    padding: 0.9rem 1.25rem;
+    border-radius: 0.75rem;
+    border: none;
+    font-weight: 700;
+    background: linear-gradient(35deg, #494949, #313131);
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  button:disabled {
+    opacity: 0.7;
+    cursor: default;
+  }
 `;
-const Card = styled.div`
-  img {
-    width: 100%;
-    border-radius: 2rem;
-  }
-  a {
-    text-decoration: none;
-  }
-  h4 {
-    text-align: center;
-    padding: 1rem;
-  }
-`;
+
 export default Cuisine;
