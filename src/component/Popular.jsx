@@ -37,11 +37,18 @@ function Popular() {
         <h3>Popular Picks</h3>
         <Splide
           options={{
-            perPage: 2,
+            perPage: 3,
+            breakpoints: {
+              1200: { perPage: 3, gap: "2rem" },
+              992: { perPage: 2, gap: "1.5rem" },
+              768: { perPage: 2, gap: "1rem" },
+              480: { perPage: 1, gap: "0.75rem" },
+            },
             arrows: false,
             pagination: false,
             drag: "free",
-            gap: "5rem",
+            gap: "2.5rem",
+            padding: "0.5rem",
           }}
         >
           {popular.map((recipe) => {
@@ -64,19 +71,34 @@ function Popular() {
 }
 
 const Wrapper = styled.div`
-  margin: 4rem 0rem;
+  margin: 2rem 0 3rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+
+  h3 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  }
 `;
 
 const Card = styled.div`
-  min-height: 15rem; /* Decrease the height for smaller screens */
-  border-radius: 2rem;
+  height: 15rem;
+  border-radius: 1.25rem;
   overflow: hidden;
   position: relative;
+  background: #1f2937;
 
+  a {
+    display: block;
+    width: 100%;
+    height: 100%; /* now resolves correctly */
+    position: relative;
+  }
   img {
-    border-radius: 2rem;
     position: absolute;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -84,23 +106,29 @@ const Card = styled.div`
 
   p {
     position: absolute;
-    z-index: 10;
-    bottom: 10%; /* Adjust the position of the text */
+    z-index: 2;
+    inset-inline: 0;
+    bottom: 0;
     color: white;
-    width: 100%;
     text-align: center;
     font-weight: 600;
-    font-size: 1rem;
-    justify-content: center;
-    align-items: center;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+    padding: 0.75rem 0.75rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   }
 `;
 
 const Gradient = styled.div`
-  z-index: 3;
   position: absolute;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.35) 25%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
 `;
+
 export default Popular;
