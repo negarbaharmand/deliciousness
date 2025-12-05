@@ -35,6 +35,12 @@ const List = styled.div`
   gap: 1rem;
   margin: 2rem 0;
   padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    padding: 0 0.5rem;
+  }
 `;
 
 const SLink = styled(NavLink)`
@@ -80,19 +86,32 @@ const SLink = styled(NavLink)`
     outline-offset: 3px;
   }
 
-  /* Tiny screens: give text more room by using a rounded pill */
-  @media (max-width: 360px) {
-    width: clamp(6rem, 45vw, 8rem);
-    height: 3.25rem;
-    border-radius: 999px;
-    flex-direction: row;
-    padding: 0 1rem;
+  /* Mobile: smaller circles, all in one row */
+  @media (max-width: 768px) {
+    width: clamp(4rem, 18vw, 5rem);
+    height: clamp(4rem, 18vw, 5rem);
+    gap: 0.15rem;
+
+    h4 {
+      font-size: clamp(0.6rem, 2.2vw, 0.75rem);
+    }
 
     svg {
-      font-size: 1.25rem;
+      font-size: clamp(1rem, 3.5vw, 1.3rem);
     }
+  }
+
+  /* Very small screens: compact pills */
+  @media (max-width: 400px) {
+    width: clamp(3.5rem, 20vw, 4.5rem);
+    height: clamp(3.5rem, 20vw, 4.5rem);
+
     h4 {
-      font-size: 0.85rem;
+      font-size: 0.55rem;
+    }
+
+    svg {
+      font-size: 0.95rem;
     }
   }
 `;
