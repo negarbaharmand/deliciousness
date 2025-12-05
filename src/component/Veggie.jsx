@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import { Link } from "react-router-dom";
 import RecipeCard from "./RecipeCard";
 
 function Veggie() {
@@ -30,6 +29,7 @@ function Veggie() {
       console.log(data.recipes);
     }
   };
+
   return (
     <Wrapper>
       <h3>Vegetarian Picks</h3>
@@ -42,7 +42,7 @@ function Veggie() {
             768: { perPage: 2, gap: "1rem" },
             480: { perPage: 1, gap: "0.75rem" },
           },
-          arrows: false,
+          arrows: true,
           pagination: false,
           drag: "free",
           gap: "2rem",
@@ -59,75 +59,78 @@ function Veggie() {
   );
 }
 
-const Wrapper = styled.div`
+const Wrapper = styled.section`
   margin: 2rem 0 3rem;
   padding: 0 1rem;
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 
   h3 {
     margin-bottom: 1rem;
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
   }
-`;
 
-const Card = styled.div`
-  height: 15rem;
-  border-radius: 1.25rem;
-  overflow: hidden;
-  position: relative;
-  background: #1f2937;
-
-  a {
-    display: block;
-    width: 100%;
-    height: 100%; /* now resolves correctly */
-    position: relative;
-  }
-  img {
+  /* Swipe hint for mobile */
+  &::after {
+    content: "← Swipe →";
     position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    top: 0;
+    right: 1rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
   }
 
-  p {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
+  /* Custom arrow styling */
+  .splide__arrow {
+    background: rgba(255, 255, 255, 0.95);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    opacity: 0.8;
 
-    color: #fff;
-    font-weight: 600;
-    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-    line-height: 1.25;
+    &:hover {
+      opacity: 1;
+      background: linear-gradient(135deg, #f27121, #e94057);
+      transform: scale(1.1);
+    }
 
-    padding: 0.75rem 1rem;
+    svg {
+      fill: #333;
+    }
 
-    background: linear-gradient(
-      to top,
-      rgba(17, 24, 39, 0.65),
-      rgba(32, 41, 61, 0.45)
-    );
-    backdrop-filter: blur(3px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    &:hover svg {
+      fill: white;
+    }
   }
-`;
 
-const Gradient = styled.div`
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(
-    to top,
-    rgba(0, 0, 0, 0.55) 0%,
-    rgba(0, 0, 0, 0.35) 25%,
-    rgba(0, 0, 0, 0.15) 50%,
-    rgba(0, 0, 0, 0) 100%
-  );
+  .splide__arrow--prev {
+    left: -1rem;
+  }
+
+  .splide__arrow--next {
+    right: -1rem;
+  }
+
+  .splide__arrow:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    .splide__arrow {
+      display: none; /* Hide arrows on mobile, show swipe hint instead */
+    }
+  }
 `;
 
 export default Veggie;

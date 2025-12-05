@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
-import RecipeCard from "../component/RecipeCard"; // adjust path
+import RecipeCard from "../component/RecipeCard";
 
 function Popular() {
   const [popular, setPopular] = useState([]);
@@ -39,7 +39,7 @@ function Popular() {
             768: { perPage: 2, gap: "1rem" },
             480: { perPage: 1, gap: "0.75rem" },
           },
-          arrows: false,
+          arrows: true,
           pagination: false,
           drag: "free",
           gap: "2rem",
@@ -62,10 +62,66 @@ const Wrapper = styled.section`
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 
   h3 {
     margin-bottom: 1rem;
     font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  }
+
+  /* Swipe hint */
+  &::after {
+    content: "← Swipe →";
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
+    display: none;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  /* Arrow styling (if using Option 1) */
+  .splide__arrow {
+    background: rgba(255, 255, 255, 0.95);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    opacity: 0.8;
+
+    &:hover {
+      opacity: 1;
+      background: linear-gradient(135deg, #f27121, #e94057);
+      transform: scale(1.1);
+    }
+
+    svg {
+      fill: #333;
+    }
+
+    &:hover svg {
+      fill: white;
+    }
+  }
+
+  .splide__arrow--prev {
+    left: -1rem;
+  }
+
+  .splide__arrow--next {
+    right: -1rem;
+  }
+
+  @media (max-width: 768px) {
+    .splide__arrow {
+      display: none; /* Hide arrows on mobile, show swipe hint instead */
+    }
   }
 `;
 
