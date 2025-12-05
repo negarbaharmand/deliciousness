@@ -4,7 +4,7 @@ import Category from "./component/Category";
 import { BrowserRouter } from "react-router-dom";
 import Search from "./component/Search";
 import styled from "styled-components";
-import { GiKnifeFork } from "react-icons/gi";
+import logoIcon from "./assets/logo.svg";
 import { Link } from "react-router-dom";
 
 function App() {
@@ -12,8 +12,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Nav>
-          <GiKnifeFork />
-          <Logo to={"/deliciousness/"}>deliciousness</Logo>
+          <StyledLogoLink to={"/deliciousness/"}>
+            <LogoImage src={logoIcon} alt="Deliciousness Logo" />
+          </StyledLogoLink>
         </Nav>
         <Search />
         <Category />
@@ -23,19 +24,29 @@ function App() {
   );
 }
 
-const Logo = styled(Link)`
-  text-decoration: none;
-  font-size: 1.5rem;
-  font-weight: 400;
-  font-family: "Lobster Two", cursive;
+const LogoImage = styled.img`
+  width: 10rem !important;
+  height: 10rem !important;
+  display: block;
+  @media (max-width: 768px) {
+    width: 6rem !important;
+    height: 6rem !important;
+  }
 `;
-const Nav = styled.div`
-  padding: 4rem 0rem;
+
+const StyledLogoLink = styled(Link)`
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  svg {
-    font-size: 2rem;
+  text-decoration: none;
+`;
+
+const Nav = styled.div`
+  padding: 2rem 0rem 1rem 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    padding: 1rem 0rem 0.5rem 0rem;
   }
 `;
 
