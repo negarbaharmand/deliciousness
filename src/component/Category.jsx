@@ -2,7 +2,6 @@ import React from "react";
 import { FaPizzaSlice, FaHamburger } from "react-icons/fa";
 import { GiNoodles, GiChopsticks } from "react-icons/gi";
 import styled from "styled-components";
-//Importing NavLink instead of Link it gives a class called active and we can add styling
 import { NavLink } from "react-router-dom";
 
 function Category() {
@@ -49,19 +48,19 @@ const SLink = styled(NavLink)`
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  background: linear-gradient(35deg, #494949, #313131);
-  color: white;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  color: #374151;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
-  /* Fluid sizing */
   width: clamp(4.5rem, 20vw, 6rem);
   height: clamp(4.5rem, 20vw, 6rem);
   border-radius: 50%;
 
   gap: 0.25rem;
   cursor: pointer;
-
-  /* Avoid initial shrink on small screens */
   transform: none;
+  transition: all 0.3s ease;
 
   h4 {
     color: inherit;
@@ -69,6 +68,8 @@ const SLink = styled(NavLink)`
     line-height: 1.1;
     text-align: center;
     white-space: nowrap;
+    font-weight: 600;
+    margin: 0;
   }
 
   svg {
@@ -76,17 +77,25 @@ const SLink = styled(NavLink)`
     font-size: clamp(1.1rem, 4vw, 1.6rem);
   }
 
-  &.active {
-    background: linear-gradient(to right, #f27121, #e94057);
+  &:hover {
+    border-color: #f27121;
+    color: #f27121;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(242, 113, 33, 0.2);
   }
 
-  /* Accessibility */
+  &.active {
+    background: linear-gradient(135deg, #f27121, #e94057);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 8px 20px rgba(242, 113, 33, 0.3);
+  }
+
   &:focus-visible {
     outline: 3px solid #f27121;
     outline-offset: 3px;
   }
 
-  /* Mobile: smaller circles, all in one row */
   @media (max-width: 768px) {
     width: clamp(4rem, 18vw, 5rem);
     height: clamp(4rem, 18vw, 5rem);
@@ -101,7 +110,6 @@ const SLink = styled(NavLink)`
     }
   }
 
-  /* Very small screens: compact pills */
   @media (max-width: 400px) {
     width: clamp(3.5rem, 20vw, 4.5rem);
     height: clamp(3.5rem, 20vw, 4.5rem);

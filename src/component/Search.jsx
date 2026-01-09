@@ -46,10 +46,24 @@ function Search() {
 }
 
 const FormStyle = styled.form`
-  margin: 2rem auto 2.5rem;
+  margin: 0rem auto 2.5rem;
   padding: 0 1rem;
   width: 100%;
   max-width: 680px;
+
+  @media (max-width: 900px) {
+    max-width: 90%;
+  }
+
+  @media (max-width: 768px) {
+    margin: 0rem auto 1.5rem;
+    max-width: 95%;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+    padding: 0 0.75rem;
+  }
 
   .visually-hidden {
     position: absolute !important;
@@ -64,25 +78,62 @@ const FormStyle = styled.form`
     width: 100%;
     position: relative;
   }
+
   input {
     width: 100%;
-    border: none;
-    background: linear-gradient(35deg, #494949, #313131);
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-    color: white;
-    padding: 0.9rem 1rem 0.9rem 3rem;
+    border: 2px solid #e5e7eb;
+    background: #ffffff;
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    color: #1f2937;
+    padding: 0.95rem 1rem 0.95rem 3rem;
     border-radius: 0.875rem;
     outline: none;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    &::placeholder {
+      color: #9ca3af;
+      opacity: 1;
+    }
+
+    &:hover {
+      border-color: #d1d5db;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    &:focus {
+      border-color: #f27121;
+      box-shadow: 0 4px 16px rgba(242, 113, 33, 0.2);
+      background: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      padding: 0.8rem 1rem 0.8rem 2.75rem;
+      font-size: 1rem;
+    }
   }
+
   svg {
     position: absolute;
     top: 50%;
-    left: 0.75rem;
+    left: 0.85rem;
     transform: translateY(-50%);
-    color: white;
-    font-size: 1rem;
-    opacity: 0.9;
+    color: #6b7280;
+    font-size: 1.1rem;
     pointer-events: none;
+    transition: color 0.3s ease;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      left: 0.75rem;
+    }
+  }
+
+  /* Change icon color when input is focused */
+  input:focus ~ svg,
+  div:focus-within svg {
+    color: #f27121;
   }
 `;
 
