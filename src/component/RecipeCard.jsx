@@ -63,40 +63,29 @@ const Card = styled.article`
   }
 
   .titleBar {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 2;
-    min-height: 64px;
-    display: flex;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    background: linear-gradient(
-      to top,
-      rgba(17, 24, 39, 0.85),
-      rgba(17, 24, 39, 0.6)
-    );
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.3s ease;
-  }
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px) saturate(180%);
+  border-top: 1px solid rgba(242, 113, 33, 0.15);
+  transition: all 0.3s ease;
+}
 
-  p {
-    margin: 0;
-    width: 100%;
-    color: #ffffff;
-    font-weight: 600;
-    letter-spacing: 0.01em;
-    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
-    line-height: 1.3;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-  }
+p {
+  margin: 0;
+  width: 100%;
+  color: #1f2937;
+  font-weight: 600;
+  /* rest of styles */
+}
+
 
   @media (max-width: 768px) {
     height: 13rem;
