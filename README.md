@@ -12,7 +12,7 @@ A multipage React application that helps food enthusiasts discover and explore r
 - Responsive design for mobile and desktop
 - Clean, intuitive user interface
 - Fast performance with optimized API calls
-- 
+  
 ## 🛠️ Tech Stack
 - **Frontend:** React, React Router, Styled Components
 - **API:** Spoonacular
@@ -24,7 +24,7 @@ A multipage React application that helps food enthusiasts discover and explore r
 - Creating reusable component architecture
 - Implementing responsive design patterns
 - Routing in single-page applications
-- 
+  
 ## 🏃‍♀️ Running Locally
 ```bash
 git clone https://github.com/negarbaharmand/deliciousness.git
