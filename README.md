@@ -40,4 +40,4 @@ Run the application
 ```bash
 npm run dev
 ```
-### Feel free to read more about the project on my [blog](https://negarbaharmand.com/posts/deliciousness/).
+### Feel free to read more about the project on my [blog](https://negarbaharmand.netlify.app/posts/deliciousness/).
